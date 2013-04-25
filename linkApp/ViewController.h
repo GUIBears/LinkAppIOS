@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) NSMutableArray *times;
+@property (strong, nonatomic) IBOutlet UILabel *label;
 
 @end
