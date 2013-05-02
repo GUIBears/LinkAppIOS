@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -208,12 +208,12 @@
                             <constraint firstAttribute="bottom" secondItem="1LO-OA-IPa" secondAttribute="bottom" constant="48" id="eS3-fa-1YU"/>
                             <constraint firstAttribute="bottom" secondItem="MSl-jR-sOX" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="f4d-05-4fN"/>
                             <constraint firstItem="xcW-cM-eVc" firstAttribute="centerX" secondItem="Ph7-hR-XUO" secondAttribute="centerX" type="default" id="hNs-EY-zHZ"/>
-                            <constraint firstAttribute="trailing" secondItem="1LO-OA-IPa" secondAttribute="trailing" constant="50" id="hUv-y5-QTP"/>
                             <constraint firstItem="Ph7-hR-XUO" firstAttribute="top" secondItem="muG-8a-EKj" secondAttribute="top" constant="25" id="i5I-Pg-RnE"/>
+                            <constraint firstItem="1LO-OA-IPa" firstAttribute="centerX" secondItem="Kat-wO-2KU" secondAttribute="centerX" type="default" id="lgw-cG-HKu"/>
                             <constraint firstAttribute="trailing" secondItem="Kat-wO-2KU" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="mVD-Tw-tOb"/>
                             <constraint firstAttribute="bottom" secondItem="Kat-wO-2KU" secondAttribute="bottom" constant="9" id="oYb-8C-hoX"/>
-                            <constraint firstItem="xcW-cM-eVc" firstAttribute="centerX" secondItem="MSl-jR-sOX" secondAttribute="centerX" type="default" id="rCv-mi-Qa5"/>
                             <constraint firstItem="xcW-cM-eVc" firstAttribute="leading" secondItem="muG-8a-EKj" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="tHA-4x-a84"/>
+                            <constraint firstItem="MSl-jR-sOX" firstAttribute="centerX" secondItem="Ph7-hR-XUO" secondAttribute="centerX" type="default" id="x7V-8d-WHP"/>
                             <constraint firstItem="1LO-OA-IPa" firstAttribute="leading" secondItem="muG-8a-EKj" secondAttribute="leading" constant="30" id="zXy-5d-0uK"/>
                         </constraints>
                     </view>
@@ -352,8 +352,8 @@
                             <constraint firstItem="Evh-YI-tmE" firstAttribute="leading" secondItem="qsV-XE-96I" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="DWR-zY-pvc"/>
                             <constraint firstAttribute="trailing" secondItem="VaM-MM-sAk" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="OsC-KM-juW"/>
                             <constraint firstItem="c4x-nK-W2D" firstAttribute="top" secondItem="qsV-XE-96I" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Qr1-QE-swj"/>
-                            <constraint firstAttribute="trailing" secondItem="7na-Ot-kuh" secondAttribute="trailing" constant="45" id="SvB-I8-wkL"/>
                             <constraint firstAttribute="bottom" secondItem="VaM-MM-sAk" secondAttribute="bottom" constant="9" id="UFI-cW-O6J"/>
+                            <constraint firstAttribute="trailing" secondItem="7na-Ot-kuh" secondAttribute="trailing" constant="36" id="ayd-lf-g5m"/>
                             <constraint firstAttribute="bottom" secondItem="7na-Ot-kuh" secondAttribute="bottom" constant="57" id="b2Q-4G-iDz"/>
                             <constraint firstAttribute="trailing" secondItem="Evh-YI-tmE" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="d1E-Px-e2h"/>
                             <constraint firstItem="7na-Ot-kuh" firstAttribute="leading" secondItem="qsV-XE-96I" secondAttribute="leading" constant="35" id="eEs-F7-8dh"/>
@@ -460,6 +460,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="YwB-Bv-0PO"/>
+        <segue reference="fL0-qs-b0X"/>
     </inferredMetricsTieBreakers>
 </document>
