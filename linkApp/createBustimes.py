@@ -23,16 +23,20 @@ place = ""
 time = ""
 id = 1
 for line in timeLines:
-	
+	m = '';
 	if(line[0:1] == '@'):
 		day = line[1:].strip()
 	elif(line[0:1] == '$'):
 		place = line[1:].strip()
+	elif(line[0:1] == '!'):
+		m = line[1:].strip();
+	elif(line[0:1] == '/'):
+		continue;
 	elif (line[0:1] == '%'):
 		sys.exit()
 	else:
 		time = line.strip();
-		c.execute("insert into BusTimes values ( ? , ? , ?, ? )",(str(id), str(day), str(place), str(time)))
+		c.execute("insert into BusTimes values ( ? , ? , ?, ? )",(str(id), str(day), str(place), str(time + m)))
 		print id, day, place, time
 		id+=1
 		con.commit()

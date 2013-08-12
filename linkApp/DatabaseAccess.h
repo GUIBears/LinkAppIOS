@@ -12,4 +12,7 @@
 @interface DatabaseAccess : NSObject
 
 +(NSMutableArray*) getTimesbyLocation: (NSString*) location;
++(FMResultSet*) getTimesbyLocationQuery:(NSString*) location;
++(NSMutableArray*) getTimesForTableByLocation:(NSString*)location;
++(int)thisString:(NSString*)mainString hasString:(NSString*)subString;
 @end
