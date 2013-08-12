@@ -61,7 +61,7 @@
                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="mjj-Ng-IdO"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
@@ -383,12 +383,8 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="Gorecki" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbK-Ht-mjk">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" misplaced="YES" text="Gorecki" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbK-Ht-mjk">
                                 <rect key="frame" x="188" y="11" width="137" height="49"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="bhd-it-ilC"/>
-                                    <constraint firstAttribute="width" constant="137" id="qTa-3T-p4P"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="34"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -400,9 +396,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BK8-5p-HSt"/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="backButton" destination="eBN-J5-jEh" id="IHa-RZ-WqM"/>
                         <outlet property="label" destination="ZbK-Ht-mjk" id="DYv-rv-gzh"/>
@@ -419,7 +412,7 @@
     <resources>
         <image name="CSB-SJU Autumn Colors 0292.jpg" width="251.25" height="298.5"/>
         <image name="CSBSJU Banner.jpg" width="281.51998901367188" height="74.400001525878906"/>
-        <image name="csb2.jpg" width="844.20001220703125" height="546"/>
+        <image name="csb2.jpg" width="234.30000305175781" height="340.79998779296875"/>
         <image name="sju-flynntown-apts-ext-1.jpg" width="461" height="597"/>
         <image name="sju-sexton-commons-exterior-2.jpg" width="465" height="600"/>
         <image name="url.jpeg" width="1200" height="1200"/>
