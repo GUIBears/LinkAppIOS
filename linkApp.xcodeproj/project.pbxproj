@@ -34,6 +34,7 @@
 		119E546017B8227400106CB1 /* TheLinkIcon120.png in Resources */ = {isa = PBXBuildFile; fileRef = 119E545E17B8227400106CB1 /* TheLinkIcon120.png */; };
 		119E546517B8242300106CB1 /* bustimes.db in Resources */ = {isa = PBXBuildFile; fileRef = 119E546417B8242300106CB1 /* bustimes.db */; };
 		119E546617B8242300106CB1 /* bustimes.db in Resources */ = {isa = PBXBuildFile; fileRef = 119E546417B8242300106CB1 /* bustimes.db */; };
+		11F412C917B9F9190047D307 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F412C817B9F9190047D307 /* Default@2x.png */; };
 		14CB947316F25A87003E33E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14CB947216F25A87003E33E4 /* UIKit.framework */; };
 		14CB947516F25A87003E33E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14CB947416F25A87003E33E4 /* Foundation.framework */; };
 		14CB947716F25A87003E33E4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14CB947616F25A87003E33E4 /* CoreGraphics.framework */; };
@@ -93,6 +94,7 @@
 		119E545D17B8227400106CB1 /* TheLinkIcon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TheLinkIcon57.png; sourceTree = "<group>"; };
 		119E545E17B8227400106CB1 /* TheLinkIcon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TheLinkIcon120.png; sourceTree = "<group>"; };
 		119E546417B8242300106CB1 /* bustimes.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = bustimes.db; sourceTree = "<group>"; };
+		11F412C817B9F9190047D307 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		14CB946F16F25A87003E33E4 /* linkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = linkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14CB947216F25A87003E33E4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		14CB947416F25A87003E33E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -201,6 +203,7 @@
 		14CB947916F25A87003E33E4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				11F412C817B9F9190047D307 /* Default@2x.png */,
 				117F326D17B858C800CF24E6 /* csb2.jpg */,
 				1140891417B84FED0088634E /* Default-568h@2x~iphone.png */,
 				1140891017B84D320088634E /* Default.png */,
@@ -352,6 +355,7 @@
 				D0A6BB5D16FBB60900732243 /* sju-sexton-commons-exterior-2.jpg in Resources */,
 				1124DA6B1729AF48003A7130 /* MainStoryboard_iPad.storyboard in Resources */,
 				1124DA6E1729AF69003A7130 /* MainStoryboard_iPhone.storyboard in Resources */,
+				11F412C917B9F9190047D307 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,11 +526,13 @@
 		14CB94AB16F25A87003E33E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Bernard Ferguson";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "linkApp/linkApp-Prefix.pch";
 				INFOPLIST_FILE = "linkApp/linkApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "A4FECFF8-E8C0-4E46-945E-9C5AEDFAB7B0";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -535,11 +541,13 @@
 		14CB94AC16F25A87003E33E4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Bernard Ferguson";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "linkApp/linkApp-Prefix.pch";
 				INFOPLIST_FILE = "linkApp/linkApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "A4FECFF8-E8C0-4E46-945E-9C5AEDFAB7B0";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
