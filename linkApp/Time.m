@@ -12,16 +12,17 @@
 @synthesize timeString, m, time, color;
 
 -(Time*)initWithTime:(NSString*)_timeString andM:(NSString*)_m{
+    self = [super init];
     self.m=_m;
     self.color=[UIColor colorWithRed:0.5 green:0.71 blue:0.71 alpha:1.0];
-    timeString = _timeString;
+    self.timeString = _timeString;
     [self convertTimeString];
     NSDateFormatter *df=[[NSDateFormatter alloc]init];
     [df setDateFormat:@"hh:mm"];
-    time = [df dateFromString:timeString];
-    if([m isEqualToString:@"pm"]){
+    self.time = [df dateFromString:self.timeString];
+    if([self.m isEqualToString:@"pm"]){
         NSTimeInterval twelveHours = 12*60*60;
-        time = [time dateByAddingTimeInterval:twelveHours];
+        self.time = [self.time dateByAddingTimeInterval:twelveHours];
     }
     return self;
 }

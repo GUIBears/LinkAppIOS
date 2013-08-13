@@ -197,7 +197,7 @@ NSRange range;
         NSString* alertBody = @"The Link leaves ";
         alertBody = [alertBody stringByAppendingString:self.label.text];
         alertBody = [alertBody stringByAppendingString:@" in 5 minutes"];
-        notification.alertBody = [NSString stringWithFormat:NSLocalizedString(@"T!",nil)];
+        notification.alertBody = alertBody;
         notification.alertAction = NSLocalizedString(@"View Details", nil);
         notification.repeatInterval = 0;
         notification.soundName = UILocalNotificationDefaultSoundName;
@@ -239,10 +239,7 @@ NSRange range;
         curTime = [calendar dateFromComponents:components];
         
         //forCommenting
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"hh:mm"];
-        components = [calendar components:flags fromDate:timeNow];
-        NSLog(@" scroll to %@",[formatter stringFromDate:curTime]);
+     
         if([timeNow compare:curTime]==NSOrderedAscending){
             nextBusIndex = i;
             [self.nextBus setText:[self.nextBus.text stringByAppendingString:thisTime.timeString]];
