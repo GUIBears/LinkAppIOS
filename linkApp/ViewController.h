@@ -11,7 +11,6 @@
 #import "TimesTableViewController.h"
 
 @interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,UIActionSheetDelegate>
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) FMResultSet* results;
 @property (strong, nonatomic) NSMutableArray* times;
 @property (strong, nonatomic) IBOutlet UILabel *label;
@@ -19,7 +18,6 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *nextBus;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
-@property (strong, nonatomic) IBOutlet UITextField *nextBusField;
 @property (strong, nonatomic) IBOutlet UIView *shadowContainer;
 
 - (IBAction)doScroll:(id)sender;

@@ -17,18 +17,28 @@
 @implementation ViewController
 @synthesize results, times, timesTable;
 NSDate* selectedTime=nil;
-NSString* alertButtonText= @"Set Alert";
-bool pm=false, am=false;
-UIFont* font;
-UIColor* cellTextColor;
-NSRange range;
+NSString* alertButtonText= @"Set Alert"; //text to be use for pop up
+bool pm=false, am=false; //whether it's currently am or pm
+UIFont* font; //font used
+UIColor* cellTextColor; //color of text
+NSRange range; //used for string comparison
 
 
 - (void)viewDidLoad
 {
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     [super viewDidLoad];
+    
+    //set the notification number on app to 0
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
+    //get database times based on the title label of the view selected
+    /*the returned times are set up as a 2d array. The first entry in the array is another array of times that represent times for sunday. the second entry in the array is another array of times that represent monday. and so forth. 
+     
+        thus the entries at index 0,1,2,3,4,5,6 of the array are all arrays of sunday,monday,tuesday,wednesday,thursday,friday,saturday all respectively.
+     */
+    
     self.times=[DatabaseAccess getTimesForTableByLocation:[self.label.text lowercaseString]];
+    //set the table of times
     self.timesTable.backgroundView = nil;
     self.timesTable.backgroundColor = [UIColor clearColor];
     self.timesTable.separatorColor = [UIColor whiteColor];
@@ -36,7 +46,9 @@ NSRange range;
     [self.timesTable setRowHeight:30];
     self.backButton.backgroundColor=
     self.nextBus.backgroundColor=[UIColor colorWithRed:0.5 green:0.71 blue:0.71 alpha:1.0];
-    [self.nextBusField setEnabled:false];
+  //  [self.nextBusField setEnabled:false];
+    
+    //create a shadow for the table view 
     [self.shadowContainer.layer setShadowColor:[UIColor blackColor].CGColor];
     [self.shadowContainer.layer setShadowOffset:CGSizeMake(2.0f,0.0f)];
     [self.shadowContainer.layer setShadowOpacity:(1.0f)];
@@ -46,30 +58,35 @@ NSRange range;
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    
+    //scroll to the next time as soon as the view opens.
     [self scrollToNextTime];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
+   //number of different sections in the table, i.e. days of the week
     return 7;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
+   //number of the amount of rows (i. e. times) for each section ( i. e. day)
     return [[self.times objectAtIndex:section] count];
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    //set up the alphabet on the right of the table to allow quick scrolling
     return [[NSMutableArray alloc]initWithObjects:@"S",@"M",@"T",@"W",@"T",@"F",@"S", nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+    //also sets up the alphabet on the right of the table to allow quick scrolling
     return index;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
+    //set up titles in table, which correspond to each day. 0 is sunday and 6 is saturday.
     NSString* currentDay = @"";
     switch (section) {
         case 0:
@@ -97,6 +114,7 @@ NSRange range;
     return currentDay;
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    //change background color on cell (for first and last buses) 
     NSInteger day = [indexPath section];
     NSInteger currentTime = [indexPath row];
     Time* cTime = [[times objectAtIndex:day]objectAtIndex:currentTime];
@@ -104,6 +122,9 @@ NSRange range;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //Takes the list of objects in self.times and returns a cell for the table.
+    
+    //find a used cell
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -111,14 +132,21 @@ NSRange range;
     }
     // Configure the cell...
     
+    //get the selected day index
     NSInteger day = [indexPath section];
+    
+    //get selected time index
     NSInteger currentTime = [indexPath row];
+    
+    //get the proper time that corresponds to the selected entry from the array of times in self.times
     Time* cTime = [[times objectAtIndex:day]objectAtIndex:currentTime];
   
+    //set the cell font and text color
     cellTextColor = [UIColor whiteColor];
     cell.textLabel.font = font;
     cell.textLabel.textColor = [UIColor whiteColor];
     
+    //add on am or pm
     NSString* cellText = cTime.timeString;
     if([cTime.m isEqualToString:@"am"]){
         cellText =[cellText stringByAppendingString:@" am"];
@@ -128,15 +156,21 @@ NSRange range;
     }
     cell.textLabel.text=cellText;
     
+    
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //get the current time selected
     Time* curTime=[[times objectAtIndex:[indexPath section]] objectAtIndex:[indexPath row] ];
+    
+    //create a calendar object to get current day number on the calendar of the iPhone
     NSCalendar * calendar = [NSCalendar autoupdatingCurrentCalendar];
     NSDateComponents* timeComp = [calendar components:NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:curTime.time];
     NSInteger dayNumber = [indexPath section];
     dayNumber = dayNumber+1;
+    
+    //if today isnt the selected day, do math to figure out how far in the future it is. 
     int today = [self getDayNumber];
     int dayDifference = 0;
     if(today != dayNumber){
@@ -147,6 +181,7 @@ NSRange range;
             dayDifference = (7 - today) + dayNumber;
         }
     }
+    //create a new time that includes the proper day difference. that is, if its, saturday(day 6) and monday is selecte(day 1), make sure the alert is set 2 days in the future
     NSDateComponents* finalTimeComp = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:[NSDate date]];
     [finalTimeComp setHour:timeComp.hour];
     [finalTimeComp setMinute:timeComp.minute];
@@ -157,6 +192,7 @@ NSRange range;
     //subtract 5 minutes from time
     selectedTime = [selectedTime dateByAddingTimeInterval:-(5*60)];
     
+    //create alert text
     NSString* alertText = @"Set Alert for 5 minutes before ";
     alertText = [alertText stringByAppendingString:curTime.timeString];
     alertText = [alertText stringByAppendingString:curTime.m];
@@ -165,8 +201,11 @@ NSRange range;
     alertText = [alertText stringByAppendingString:selectedDay];
     alertText = [alertText stringByAppendingString:@"?"];
     
+    //show alert
     UIActionSheet* sheet = [[UIActionSheet alloc] initWithTitle:alertText delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:alertButtonText, nil];
     [sheet showInView:self.view];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -176,6 +215,7 @@ NSRange range;
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+   //if the user agrees, create the notification.
     if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:alertButtonText] ){
         [self createnotification];
     }
@@ -187,9 +227,10 @@ NSRange range;
 
 -(void)createnotification
 {
+
     if(selectedTime){
         UILocalNotification* notification = [[UILocalNotification alloc] init];
-        
+        //give the proper parameters to the notification
         if (notification)
         {
         notification.fireDate = selectedTime;
@@ -199,6 +240,7 @@ NSRange range;
         alertBody = [alertBody stringByAppendingString:@" in 5 minutes"];
         notification.alertBody = alertBody;
         notification.alertAction = NSLocalizedString(@"View Details", nil);
+            //do not repeat
         notification.repeatInterval = 0;
         notification.soundName = UILocalNotificationDefaultSoundName;
         [[UIApplication sharedApplication] scheduleLocalNotification:notification];
@@ -215,6 +257,7 @@ NSRange range;
 }
 
 -(int)getDayNumber{
+    //find out what day number it is
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
     int weekday = [comps weekday];
@@ -222,10 +265,14 @@ NSRange range;
 }
 
 -(void)scrollToNextTime{
+    //scroll to the next bus
+    //get today's number
     int today = [self getDayNumber]-1;
     int nextBusIndex = 0;
     unsigned int flags = NSHourCalendarUnit | NSMinuteCalendarUnit;
     NSCalendar* calendar = [NSCalendar autoupdatingCurrentCalendar];
+    
+    //get the list of times for the current day
     NSMutableArray* todaysTimes = [self.times objectAtIndex:today];
     
     ///get only hour and minute from current time on device
@@ -234,23 +281,28 @@ NSRange range;
     bool found=false;
     NSDate* curTime;
     for(int i=0;i<[todaysTimes count];i++){
+        //loop through the times for today and find which time is next
         Time* thisTime = [todaysTimes objectAtIndex:i];
         components = [calendar components:flags fromDate:thisTime.time];
         curTime = [calendar dateFromComponents:components];
-        
-        //forCommenting
      
+        //if the time being compared is greater than the time on the device, then thats the new time
         if([timeNow compare:curTime]==NSOrderedAscending){
             nextBusIndex = i;
-            [self.nextBus setText:[self.nextBus.text stringByAppendingString:thisTime.timeString]];
+            NSString* nextBusString=thisTime.timeString;
+            nextBusString = [nextBusString stringByAppendingString:thisTime.m];
+            
+            [self.nextBus setText:[self.nextBus.text stringByAppendingString:nextBusString]];
             found=true;
             break;
         }
     }
+    //if no time was found, then increase the day number. this has not been used yet.
     if(!found){
         today= [self increaseDay:today];
     }
     
+    //scroll table to the next found time
     NSIndexPath* scrollTo = [NSIndexPath indexPathForRow:nextBusIndex inSection:today];
     [self.timesTable scrollToRowAtIndexPath:scrollTo atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
