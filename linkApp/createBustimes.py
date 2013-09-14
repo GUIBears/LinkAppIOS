@@ -11,8 +11,8 @@ c.execute("""CREATE TABLE BusTimes
 				(id char PRIMARY KEY,
 				Day char,
 				Place char,
-				Time char
-				)""")
+				Time char,
+				M char)""")
 				
 f = open("times list", "r")
 
@@ -22,21 +22,22 @@ day = ""
 place = ""
 time = ""
 id = 1
+m = ''
 for line in timeLines:
-	m = '';
 	if(line[0:1] == '@'):
 		day = line[1:].strip()
 	elif(line[0:1] == '$'):
 		place = line[1:].strip()
 	elif(line[0:1] == '!'):
 		m = line[1:].strip();
+		print m;
 	elif(line[0:1] == '/'):
 		continue;
 	elif (line[0:1] == '%'):
 		sys.exit()
 	else:
 		time = line.strip();
-		c.execute("insert into BusTimes values ( ? , ? , ?, ? )",(str(id), str(day), str(place), str(time + m)))
+		c.execute("insert into BusTimes values ( ? , ? , ? , ? , ? )",(str(id), str(day), str(place), str(time), str(m)))
 		print id, day, place, time
 		id+=1
 		con.commit()
