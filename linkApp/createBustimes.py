@@ -33,7 +33,7 @@ for line in timeLines:
 		print m;
 	elif(line[0:1] == '/'):
 		continue;
-	elif (line[0:1] == '%'):
+	elif (line[0:1] == '^'):
 		sys.exit()
 	else:
 		time = line.strip();

@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface Time : NSObject
-@property (nonatomic,retain) NSString *timeString, *m;
+@property (nonatomic,retain) NSString *timeString, *m, *sTimeString;
 @property (nonatomic, retain) NSDate* time;
-@property (nonatomic, retain) UIColor* color;
+@property (nonatomic, retain) UIColor* textColor, *bgColor;
+@property  Boolean classBus;
 
 
 -(Time*)initWithTime:(NSString*)_time andM:(NSString*)_m;

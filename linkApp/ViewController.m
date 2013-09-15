@@ -42,7 +42,7 @@ NSRange range; //used for string comparison
     self.timesTable.backgroundView = nil;
     self.timesTable.backgroundColor = [UIColor clearColor];
     self.timesTable.separatorColor = [UIColor whiteColor];
-    font = [UIFont fontWithName:@"Avenir Next" size:20];
+    
     [self.timesTable setRowHeight:30];
     self.backButton.backgroundColor=
     self.nextBus.backgroundColor=[UIColor colorWithRed:0.5 green:0.71 blue:0.71 alpha:1.0];
@@ -118,7 +118,7 @@ NSRange range; //used for string comparison
     NSInteger day = [indexPath section];
     NSInteger currentTime = [indexPath row];
     Time* cTime = [[times objectAtIndex:day]objectAtIndex:currentTime];
-    cell.backgroundColor=cTime.color;
+    cell.backgroundColor=cTime.bgColor;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -143,9 +143,11 @@ NSRange range; //used for string comparison
   
     //set the cell font and text color
     cellTextColor = [UIColor whiteColor];
+    font = [UIFont fontWithName:@"Avenir Next" size:20];
+  
     cell.textLabel.font = font;
-    cell.textLabel.textColor = [UIColor whiteColor];
-    
+    cell.textLabel.textColor =  cTime.textColor;
+   
     //add on am or pm
     NSString* cellText = cTime.timeString;
     if([cTime.m isEqualToString:@"am"]){
@@ -154,7 +156,11 @@ NSRange range; //used for string comparison
     if([cTime.m isEqualToString:@"pm"]){
         cellText =[cellText stringByAppendingString:@" pm"];
     }
+    if(cTime.classBus ==true){
+        cellText = [cellText stringByAppendingString:@"*"];
+    }
     cell.textLabel.text=cellText;
+    
     
     
     return cell;

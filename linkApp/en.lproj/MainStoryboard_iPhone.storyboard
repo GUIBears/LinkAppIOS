@@ -104,6 +104,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="196" id="pbu-RO-zks"/>
                                 </constraints>
+                                <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="FWA-Me-yS9" id="xpC-2U-LO9"/>
                                     <outlet property="delegate" destination="FWA-Me-yS9" id="u5o-Xj-HXb"/>
@@ -124,7 +125,7 @@
                                     <constraint firstAttribute="width" constant="58" scoringType="23.5" id="4oW-co-Om6"/>
                                     <constraint firstAttribute="height" constant="28" id="MB1-pT-f9T"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <state key="normal" title="back">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

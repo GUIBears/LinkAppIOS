@@ -80,7 +80,7 @@
 		1124DA751729B19F003A7130 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = linkApp/FMDatabaseQueue.h; sourceTree = "<group>"; };
 		1124DA761729B19F003A7130 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = linkApp/FMDatabaseQueue.m; sourceTree = "<group>"; };
 		1124DA781729B19F003A7130 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = linkApp/FMResultSet.h; sourceTree = "<group>"; };
-		1124DA791729B19F003A7130 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = linkApp/FMResultSet.m; sourceTree = "<group>"; };
+		1124DA791729B19F003A7130 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		1124DA861729B1AF003A7130 /* DatabaseAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatabaseAccess.h; path = linkApp/DatabaseAccess.h; sourceTree = "<group>"; };
 		1124DA871729B1AF003A7130 /* DatabaseAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DatabaseAccess.m; path = linkApp/DatabaseAccess.m; sourceTree = "<group>"; };
 		1124DA8D1729B692003A7130 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
@@ -195,6 +195,7 @@
 				1124DA691729AF48003A7130 /* MainStoryboard_iPad.storyboard */,
 				14CB948116F25A87003E33E4 /* AppDelegate.h */,
 				14CB948216F25A87003E33E4 /* AppDelegate.m */,
+				1124DA791729B19F003A7130 /* FMResultSet.m */,
 				14CB949016F25A87003E33E4 /* ViewController.h */,
 				14CB949116F25A87003E33E4 /* ViewController.m */,
 				1172755317B863B7006BB5EC /* Time.h */,
@@ -267,7 +268,6 @@
 				1124DA751729B19F003A7130 /* FMDatabaseQueue.h */,
 				1124DA761729B19F003A7130 /* FMDatabaseQueue.m */,
 				1124DA781729B19F003A7130 /* FMResultSet.h */,
-				1124DA791729B19F003A7130 /* FMResultSet.m */,
 			);
 			name = FMDB;
 			sourceTree = "<group>";
@@ -540,15 +540,15 @@
 		14CB94AB16F25A87003E33E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Bernard Ferguson";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bernard Ferguson";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nard Ferguson (AXAA5D9248)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nard Ferguson (AXAA5D9248)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "linkApp/linkApp-Prefix.pch";
 				INFOPLIST_FILE = "linkApp/linkApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A4FECFF8-E8C0-4E46-945E-9C5AEDFAB7B0";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A4FECFF8-E8C0-4E46-945E-9C5AEDFAB7B0";
+				PROVISIONING_PROFILE = "6A74295D-C9EC-48D9-A42B-CD4016A8F539";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6A74295D-C9EC-48D9-A42B-CD4016A8F539";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -557,15 +557,15 @@
 		14CB94AC16F25A87003E33E4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Bernard Ferguson";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bernard Ferguson";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nard Ferguson (AXAA5D9248)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nard Ferguson (AXAA5D9248)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "linkApp/linkApp-Prefix.pch";
 				INFOPLIST_FILE = "linkApp/linkApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A4FECFF8-E8C0-4E46-945E-9C5AEDFAB7B0";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A4FECFF8-E8C0-4E46-945E-9C5AEDFAB7B0";
+				PROVISIONING_PROFILE = "6A74295D-C9EC-48D9-A42B-CD4016A8F539";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6A74295D-C9EC-48D9-A42B-CD4016A8F539";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

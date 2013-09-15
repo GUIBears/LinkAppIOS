@@ -11,13 +11,16 @@
 //this is the time object. it stores a date, string, whether am or pm and a color.
 
 @implementation Time
-@synthesize timeString, m, time, color;
+@synthesize timeString, m, time, textColor, bgColor, classBus;
 
 -(Time*)initWithTime:(NSString*)_timeString andM:(NSString*)_m{
+    
     //initialize with the parameters passed in. take the time string and create an actual iOS time object (NSDate object)
     self = [super init];
     self.m=_m;
-    self.color=[UIColor colorWithRed:0.5 green:0.71 blue:0.71 alpha:1.0];
+    //original bg color
+    self.bgColor=[UIColor colorWithRed:0.5 green:0.71 blue:0.71 alpha:1.0];
+    self.textColor=[UIColor whiteColor];
     self.timeString = _timeString;
     [self convertTimeString];
     NSDateFormatter *df=[[NSDateFormatter alloc]init];
@@ -32,22 +35,42 @@
 
 
 -(void)convertTimeString{
+    UIColor *green = [UIColor colorWithRed:72.0f/255.0f green:141.0f/255.0f blue:151.0f/255.0f alpha:1.0];
+    UIColor *red = [UIColor colorWithRed:216.0f/255.0f green:109.0f/255.0f blue:109.0f/255.0f alpha:1.0];
     //if there is a * in front of the time, that means its the first bus. if its a # that means its the last bus
-    NSRange range;
-    range=[timeString rangeOfString:@"*"];
-    if(range.location != NSNotFound){
+    if([timeString rangeOfString:@"*" ].location != NSNotFound){
        // NSLog(@"*");
         timeString =[timeString substringFromIndex:1];
-        color= [UIColor colorWithRed:0.5 green:0.91 blue:0.81 alpha:1.0];
+        self.bgColor=green ;
+        classBus = true;//  textColor=  [UIColor colorWithRed:0.01 green:0.1 blue:0.8 alpha:1.0];
+       // textColor = [UIColor redColor];
+        
     }
-    else{
-        range=[timeString rangeOfString:@"#"];
-        if(range.location != NSNotFound){
+    else if([timeString rangeOfString:@"#" ].location != NSNotFound){
+       
            // NSLog(@"#");
             timeString =[timeString substringFromIndex:1];
-            color = [UIColor colorWithRed:0.9 green:0.2 blue:0.2 alpha:1.0];
-        }
+        self.bgColor=red;
+        classBus = true;
+       // textColor = [UIColor redColor];
+
+         //   textColor=[UIColor blackColor];
     }
 
+    else if([timeString rangeOfString:@"&" ].location != NSNotFound){
+    
+    // NSLog(@"#");
+    timeString =[timeString substringFromIndex:1];
+   // textColor=  [UIColor colorWithRed:0.3 green:0.9 blue:0.3 alpha:1.0];
+        self.bgColor=green;
+    }
+    else if ([timeString rangeOfString:@"%" ].location != NSNotFound){
+    
+        // NSLog(@"#");
+        timeString =[timeString substringFromIndex:1];
+        self.bgColor=red;
+     //   textColor=[UIColor colorWithRed:0.8 green:0.1 blue:0.1 alpha:1.0];
+    }
 }
+
 @end
